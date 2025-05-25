@@ -32,7 +32,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
 
 # Download and extract RoonServer to /opt
 WORKDIR /opt
-RUN wget https://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 && \
+RUN wget -nv https://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 && \
     bzip2 -d RoonServer_linuxx64.tar.bz2 && \
     tar -xvf RoonServer_linuxx64.tar && \
     rm RoonServer_linuxx64.tar && \
