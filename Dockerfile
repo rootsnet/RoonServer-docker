@@ -30,11 +30,13 @@ ENV ROON_DATAROOT=/var/roon
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone
 
-# Copy pre-extracted RoonServer directory
-COPY RoonServer /opt/RoonServer
-
-# Make start script executable
-RUN chmod +x /opt/RoonServer/start.sh
+# Download and extract RoonServer to /opt
+WORKDIR /opt
+RUN wget https://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 && \
+    bzip2 -d RoonServer_linuxx64.tar.bz2 && \
+    tar -xvf RoonServer_linuxx64.tar && \
+    rm RoonServer_linuxx64.tar && \
+    chmod +x /opt/RoonServer/start.sh
 
 # Create data directory
 RUN mkdir -p /var/roon
