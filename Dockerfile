@@ -38,6 +38,16 @@ RUN wget -nv https://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 &&
     rm RoonServer_linuxx64.tar && \
     chmod +x /opt/RoonServer/start.sh
 
+# After RoonServer is installed, remove apt and tools
+RUN apt-get update -q || true && \
+    apt-get purge -y --auto-remove \
+        curl wget bzip2 apt-utils \
+        openssh-client openssh-server \
+        netcat-openbsd net-tools \
+        iputils-ping telnet traceroute || true && \
+    rm -f /usr/bin/apt /usr/bin/apt-get /usr/bin/apt-cache /usr/bin/apt-config && \
+    rm -rf /etc/apt /var/lib/apt /var/cache/apt /var/lib/apt/lists/*
+
 # Create data directory
 RUN mkdir -p /var/roon
 
