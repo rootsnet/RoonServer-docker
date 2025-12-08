@@ -11,12 +11,12 @@ RUN ln -sf /bin/true /sbin/initctl
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 
 # Install necessary packages for RoonServer and audio/network support
-RUN apt update -q && \
-    apt install --no-install-recommends -y -q \
+RUN apt-get update -q && \
+    apt-get install --no-install-recommends -y -q \
         ca-certificates apt-utils ffmpeg libasound2-dev cifs-utils alsa \
-        usbutils udev curl wget bzip2 tzdata locales && \
-    apt autoremove -y -q && \
-    apt clean -y -q && \
+        usbutils udev multitail curl wget bzip2 tzdata locales && \
+    apt-get autoremove -y -q && \
+    apt-get clean -y -q && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 # Set environment variables
