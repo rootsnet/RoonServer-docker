@@ -47,8 +47,10 @@ RUN apt-get update -q || true && \
     rm -f /usr/bin/apt /usr/bin/apt-get /usr/bin/apt-cache /usr/bin/apt-config && \
     rm -rf /etc/apt /var/lib/apt /var/cache/apt /var/lib/apt/lists/*
 
-# Create data directory
+# Create directory
 RUN mkdir -p /var/roon
+RUN mkdir -p /var/Music
+RUN mkdir -p /var/RoonBackups
 
 # Declare mountable volumes
 VOLUME ["/opt/RoonServer", "/var/roon"]
