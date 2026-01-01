@@ -14,7 +14,7 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
 RUN apt-get update -q && \
     apt-get install --no-install-recommends -y -q \
         ca-certificates apt-utils ffmpeg libasound2-dev cifs-utils alsa \
-        usbutils udev multitail curl wget bzip2 tzdata locales && \
+        usbutils udev multitail curl wget bzip2 lbzip2 tzdata locales && \
     apt-get autoremove -y -q && \
     apt-get clean -y -q && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
