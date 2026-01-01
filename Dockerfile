@@ -40,7 +40,7 @@ RUN wget -nv https://download.roonlabs.com/builds/RoonServer_linuxx64.tar.bz2 &&
 # After RoonServer is installed, remove apt and tools
 RUN apt-get update -q || true && \
     apt-get purge -y --auto-remove \
-        curl wget bzip2 apt-utils \
+        curl wget apt-utils \
         openssh-client openssh-server \
         netcat-openbsd net-tools \
         iputils-ping telnet traceroute || true && \
