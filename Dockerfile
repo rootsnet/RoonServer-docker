@@ -76,4 +76,4 @@ EXPOSE 52709/tcp
 EXPOSE 63098-63100/tcp
 
 # Default command to launch RoonServer
-CMD ["./start.sh"]
+CMD ["/opt/RoonServer/start.sh"]
